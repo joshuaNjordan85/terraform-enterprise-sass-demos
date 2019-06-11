@@ -1,3 +1,19 @@
+variable "app_name" {
+  type = "string"
+}
+
+variable "location" {
+  type = "string"
+}
+
+variable "vm_size" {
+  type = "string"
+}
+
+variable "instance_count" {
+  type = "number"
+}
+
 provider "azurerm" {}
 
 resource "azurerm_resource_group" "resource_gp" {
