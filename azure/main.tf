@@ -1,17 +1,17 @@
 variable "app_name" {
-  type = "string"
+  type = string
 }
 
 variable "location" {
-  type = "string"
+  type = string
 }
 
 variable "vm_size" {
-  type = "string"
+  type = string
 }
 
 variable "instance_count" {
-  type = "number"
+  type = number
 }
 
 provider "azurerm" {}
