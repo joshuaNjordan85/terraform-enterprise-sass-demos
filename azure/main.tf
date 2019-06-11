@@ -1,3 +1,19 @@
+variable "ARM_TENANT_ID" {
+  type = string
+}
+
+variable "ARM_SUBSCRIPTION_ID" {
+  type = string
+}
+
+variable "ARM_CLIENT_SECRET" {
+  type = string
+}
+
+variable "ARM_CLIENT_ID" {
+  type = string
+}
+
 variable "app_name" {
   type = string
 }
@@ -14,7 +30,12 @@ variable "instance_count" {
   type = number
 }
 
-provider "azurerm" {}
+provider "azurerm" {
+  subscription_id = "${var.ARM_SUBSCRIPTION_ID}"
+  client_id       = "${var.ARM_CLIENT_ID}"
+  client_secret   = "${var.ARM_CLIENT_SECRET}"
+  tenant_id       = "${var.ARM_TENANT_ID}"
+}
 
 resource "azurerm_resource_group" "resource_gp" {
   name     = "${var.app_name}-rg"
@@ -56,7 +77,7 @@ resource "azurerm_virtual_machine" "app_vm" {
     disable_password_authentication = false
   }
 
-  tags {
+  tags = {
     environment = "demo"
   }
 }
